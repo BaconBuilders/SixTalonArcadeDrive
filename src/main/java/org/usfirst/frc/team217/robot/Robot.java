@@ -316,9 +316,10 @@ public class PixyExample {
 	int i2cTurnForward;
 	double turnValue;
 	int turnValueHolder;
+	double calculateForwardPower;
 	double forwardValue;
 	int xPosition;
-
+	
 	//String[] packet = new String[];
 
 /*
@@ -388,49 +389,65 @@ System.out.println("XPos: " + packet);
 
 turnValue = 0.0;
 
+
 turnValueHolder = i2cTurnForward - ((i2cTurnForward / 100)) * 100;
-//turnValue = ((turnValueHolder * (2/11) / 10) + 0.35);
+calculateForwardPower = ((i2cTurnForward -40)/100);
+calculateForwardPower = (calculateForwardPower/10);
+//  turnValue = ((turnValueHolder * (2/11) / 10) + 0.35);
 
 switch(turnValueHolder) {
 
 case 0:
 turnValue = 0.0;
+forwardValue = 0.0;
 break;
 case 1:
 turnValue = -0.55;
+forwardValue = 0.0;
 break;
 case 2:
 turnValue = -0.51;
+forwardValue = 0.0;
 break;
 case 3:
 turnValue = -0.47;
+forwardValue = 0.0;
 break;
 case 4:
 turnValue = -0.43;
+forwardValue = 0.0;
 break;
 case 5:
 turnValue = -0.39;
+forwardValue = 0.0;
 break;
 case 6:
 turnValue = 0.0;
+forwardValue = calculateForwardPower;
 break;
 case 7:
 turnValue = 0.39;
+forwardValue = 0.0;
 break;
 case 8:
 turnValue = 0.43;
+forwardValue = 0.0;
 break;
 case 9:
 turnValue = 0.47;
+forwardValue = 0.0;
 break;
 case 10:
 turnValue = 0.51;
+forwardValue = 0.0;
 break;
 case 11:
 turnValue = 0.55;
+forwardValue = 0.0;
 break;
 default:
 turnValue = 0.0;
+forwardValue = 0.0;
 break;
 
 }
@@ -445,9 +462,9 @@ System.out.println("i2cTurnForward: " + i2cTurnForward);
 timer.reset(); // Resets the timer to 0
 timer.start(); // Start counting
 
-while(timer.get() <= .5){
+while(timer.get() <= .17){
 
-_drive.arcadeDrive(0.0, turnValue);
+_drive.arcadeDrive(forwardValue, turnValue);
 
 }
 
@@ -757,7 +774,15 @@ public class Count{
 
 	public void autonomousPeriodic() { //This method is called each time the robot recieves a packet instructing the robot to be in autonomous enabled mode
 	     // Drive for 2 seconds
-		
+	
+
+		_drive.arcadeDrive(0.4111234, 0.0);
+
+
+
+
+
+		/*
 if(autonomousCounter.returnCounterValue() <= 2){
 		while(ahrs.getYaw() <= 90.0){
 
@@ -787,7 +812,7 @@ if(autonomousCounter.returnCounterValue() <= 2){
 else{
 			_drive.arcadeDrive(0.0, 0.0);
 		}
-
+*/
 /*
 		if(autonomousCounter.returnCounterValue() <= 2){
 			if(timer.get() <= 1.0){
