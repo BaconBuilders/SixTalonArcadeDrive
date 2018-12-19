@@ -391,7 +391,7 @@ turnValue = 0.0;
 
 
 turnValueHolder = i2cTurnForward - ((i2cTurnForward / 100)) * 100;
-calculateForwardPower = ((i2cTurnForward -40)/100);
+calculateForwardPower = ((i2cTurnForward)/100);
 calculateForwardPower = (calculateForwardPower/10);
 //  turnValue = ((turnValueHolder * (2/11) / 10) + 0.35);
 
@@ -414,7 +414,7 @@ turnValue = -0.47;
 forwardValue = 0.0;
 break;
 case 4:
-turnValue = -0.43;
+turnValue = -0.41;
 forwardValue = 0.0;
 break;
 case 5:
@@ -430,7 +430,7 @@ turnValue = 0.39;
 forwardValue = 0.0;
 break;
 case 8:
-turnValue = 0.43;
+turnValue = 0.41;
 forwardValue = 0.0;
 break;
 case 9:
@@ -462,7 +462,7 @@ System.out.println("i2cTurnForward: " + i2cTurnForward);
 timer.reset(); // Resets the timer to 0
 timer.start(); // Start counting
 
-while(timer.get() <= .17){
+while(timer.get() <= .12){  //was .17
 
 _drive.arcadeDrive(forwardValue, turnValue);
 
