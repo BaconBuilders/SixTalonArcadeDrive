@@ -418,7 +418,7 @@ turnValue = -0.41;
 forwardValue = 0.0;
 break;
 case 5:
-turnValue = -0.39;
+turnValue = -0.37; // was -0.39
 forwardValue = 0.0;
 break;
 case 6:
@@ -426,7 +426,7 @@ turnValue = 0.0;
 forwardValue = calculateForwardPower;
 break;
 case 7:
-turnValue = 0.39;
+turnValue = 0.37; // was 0.39
 forwardValue = 0.0;
 break;
 case 8:
@@ -748,6 +748,10 @@ public class Count{
 	}
 
 }//end Count class
+
+	public void runPixyTest() {
+		testPixy.pixyTest();
+	}
 	
 	/*Autonomous Attempt
 	 * 
@@ -961,13 +965,15 @@ else{
 			
 		
 		//Runs Pixy Test Navigation
-			
+			/*
 		if(forward == 0.0 && turn == 0.0){
 			testPixy.pixyTest();
 			}
-		
-		
-/*
+			*/
+		if(_joy.getRawButton(11) && forward == 0.0 && turn == 0.0) {		
+			testPixy.pixyTest();
+		}
+/*		
 		if(forward == 0.0 && turn == 0.0){
 			testPixy.mxpTest();
 			}
