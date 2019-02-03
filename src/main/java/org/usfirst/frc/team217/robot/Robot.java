@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -15,6 +16,9 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SendableBase;
 import edu.wpi.first.wpilibj.SensorBase;
 import edu.wpi.first.wpilibj.Encoder;
+
+//useless comment
+
 
 
 //camera libraries
@@ -56,6 +60,7 @@ public class Robot extends IterativeRobot {
 	WPI_TalonSRX _leftSlave1 = new WPI_TalonSRX(3);
 	WPI_TalonSRX _rightSlave1 = new WPI_TalonSRX(1);
 
+	PWMTalonSRX ad2 = new PWMTalonSRX(0);
 
 	DifferentialDrive _drive = new DifferentialDrive(_frontLeftMotor, _frontRightMotor);
 
@@ -973,6 +978,23 @@ else{
 			testPixy.pixyTest();
 			}
 			*/
+
+
+
+		//Start of PWM Test
+		//assign button 9 on joystick to activate PWM(0) for test with 
+		//Digilent Analog Discovery2
+
+		if(_joy.getRawButton(9)) {
+			ad2.set(1.0);
+		} else {
+			ad2.set(-1.0);
+		}
+
+		//End of PWM Test
+
+
+
 		if(_joy.getRawButton(11) && forward == 0.0 && turn == 0.0) {		
 			testPixy.pixyTest();
 		}
